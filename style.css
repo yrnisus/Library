@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+header {
+    background-color: #FFF;
+    height: 120px;
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 42px;
+    font-weight: bold;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+/* Footer */
+
+footer {
+    position: sticky;
+    bottom: 50px;
+    display: flex;
+    justify-content: end;
+    padding-right: 10%;
+    border: 1px solid red;
+}
+
+footer button {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 2px solid black;
+    background-color: red;
+    font-size: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+}
+
+footer button:hover {
+    transform: scale(1.1);
+    /* Maybe change colors */
+}
