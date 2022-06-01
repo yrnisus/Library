@@ -7,6 +7,13 @@ function Book(title, author, numOfPages, haveRead) {
  this.haveRead = haveRead;
 }
 
+
+const exampleBook = new Book(
+  'The Catcher In The Rye',
+  'J. D. Salinger',
+  234,
+  false);
+
 function addBookToLibrary() {
   // do stuff here
 }
@@ -21,10 +28,12 @@ modalBtn.addEventListener('click', function() {
   modalBg.classList.add('bg-active');
 })
 
-modalBg.addEventListener('click', function() {
-  if(modalBg.classList.contains('bg-active'))
+modalBg.addEventListener('click', e => {
+  if(!(e.target !== e.currentTarget)) {
+    if(modalBg.classList.contains('bg-active'))
   modalBg.classList.remove('bg-active');
-})
+  }
+});
 
 modalClose.addEventListener('click', function() {
   modalBg.classList.remove('bg-active');

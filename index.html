@@ -5,26 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
     <title>Library</title>
 </head>
 <header>
     Library
 </header>
+<div class="empty"></div>
 <body>
-    <div class="content"></div>
-    <table></table>
+    <div class="card-container">
+        <div class="example-card card-bg">
+            <div class="card-text">
+                <div class="card-title">The Catcher In The Rye</div>
+                <div class="card-author">By: J. D. Salinger</div>
+                <div class="card-numOfPages">234 Pages</div>
+                <button class="card-read">Read</button>
+            </div>
+            <div class="close-card-btn">X</div>
+        </div>
+        
+        
+    </div>
 
     <div class="modal-bg">
         <div class="modal-container">
             <div class="modal">
                     <h2 class="modal-title">New Book</h2>
                 <label for="title">Book title:</label>
-                <input type="text" class="newBookTitle">
+                <input type="text" class="newBookTitle" placeholder="Title">
                 <label for="author">Author name:</label>
-                <input type="text" class="newBookAuthor">
+                <input type="text" class="newBookAuthor" placeholder="Author">
                 <label for="numPages">Number of pages:</label>
-                <input type="text" class="newBookPages">
+                <input type="text" class="newBookPages" placeholder="Pages">
                 <label for="haveRead">Have you read this book:</label>
                 <input type="checkbox" class="haveRead">
                 <div class="btn-container">
@@ -34,11 +49,6 @@
             <div class="close-modal-btn">X</div>
         </div>
     </div>
-
-
-
-</body>
-<footer>
     <button class="modal-btn">+</button>
-</footer>
+</body>
 </html>

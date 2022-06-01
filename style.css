@@ -1,12 +1,22 @@
-body {
+html, body {
     margin: 0;
     padding: 0;
-    height: 100vh;
+}
+
+body {
+    font-family: 'Spline Sans Mono', monospace;
+}
+
+.empty {
+    height: 80px;
 }
 
 header {
+    width: 100%;
+    position: fixed;
+    top: 0;
     background-color: #FFF;
-    height: 120px;
+    height: 80px;
     border-bottom: 1px solid gray;
     display: flex;
     justify-content: center;
@@ -15,26 +25,61 @@ header {
     font-weight: bold;
 }
 
+
+/* Body */
+
 body {
     display: flex;
     flex-direction: column;
+    /* background-image: url(./images/bg2.jpg); */
+    background-color: lightgray;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
-.content {
-    flex: 1 0 auto;
+.card-container {
+    padding-top: 50px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 300px);
+    grid-auto-rows: 300px;
+    gap: 50px;
+    
 }
 
-/* Footer */
+.card-bg {
+    position: relative;
+    border: 1px solid black;
+    height: 300px;
+    width: 300px;
+    background-color: #FFF;
+    border-radius: 25px;
+    margin: 0;
+}
 
-footer {
-    position: sticky;
-    bottom: 50px;
+.close-card-btn {
+    position: absolute;
+    right: 13px;
+    top: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.card-text {
+    height: 100%;
     display: flex;
-    justify-content: end;
-    padding-right: 10%;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 30px;
+    font-size: 22px;
+} 
+.card-title {
+    font-size: 26px;
+    font-weight: 700;
 }
-
-footer button {
+.modal-btn {
+    position: fixed;
     width: 75px;
     height: 75px;
     border-radius: 50%;
@@ -46,6 +91,8 @@ footer button {
     align-items: center;
     color: #FFF;
     cursor: pointer;
+    bottom: 75px;
+    right: 75px;
 }
 
 footer button:hover {
@@ -74,6 +121,7 @@ footer button:hover {
 .bg-active {
     visibility: visible;
     opacity: 1;
+    z-index: 1;
 }
 
 .modal-container {
