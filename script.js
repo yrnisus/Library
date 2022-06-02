@@ -1,12 +1,29 @@
 let myLibrary = [];
 
+// function Book(title, author, numOfPages,index) {
+//  this.title = title;
+//  this.author = author;
+//  this.numOfPages = numOfPages;
+//  this.index = index;
+// }
+
+
+// const exampleBook = new Book(
+//   'The Catcher In The Rye',
+//   'J. D. Salinger',
+//   234,
+//   0);
+
+
+// Not working Pages
+
 function Book(title, author, numOfPages, haveRead, index) {
- this.title = title;
- this.author = author;
- this.numOfPages = numOfPages;
- this.haveRead = haveRead;
- this.index = index;
-}
+  this.title = title;
+  this.author = author;
+  this.numOfPages = numOfPages;
+  this.haveRead = haveRead;
+  this.index = index;
+ }
 
 const exampleBook = new Book(
   'The Catcher In The Rye',
@@ -44,6 +61,18 @@ modalClose.addEventListener('click', function() {
   modalBg.classList.remove('bg-active');
 })
 
+addBookBtn.addEventListener('click', function() {
+  addBookToLibrary();
+})
+
+
+function checkInputs() {
+  document.getElementById('newBookTitle').validity.valid
+  document.getElementById('newBookAuthor').validity.valid
+  document.getElementById('newBookPages').validity.valid
+  // document.getElementById('your_input_id').validity.valid
+}
+
 // Add new book
 function addBookToLibrary() {
   const newBook = new Book(
@@ -59,12 +88,12 @@ function addBookToLibrary() {
     clearModal();
 }
 
-// Form
-const form = document.getElementById('form');
+// // Form
+// const form = document.getElementById('form');
 
-form.addEventListener('submit', function() {
-  addBookToLibrary();
-})
+// form.addEventListener('submit', function() {
+//   addBookToLibrary();
+// })
 
 
 //           <div class="card-read">Read: ${obj.haveRead}</div>
@@ -101,7 +130,7 @@ function clearModal() {
     document.getElementById("newBookTitle").value = '';
     document.getElementById("newBookAuthor").value = '';
     document.getElementById("newBookPages").value = '';
-    document.getElementById("haveRead").value = '';
+    document.getElementById("haveRead").value = 'Yes';
 }
 
 function removeBookFromLibrary(index) {
@@ -126,4 +155,5 @@ function start() {
     addCard(e);
   })
 }
+
 start();
