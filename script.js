@@ -42,11 +42,6 @@ modalClose.addEventListener('click', function() {
   modalBg.classList.remove('bg-active');
 })
 
-// This is dumb
-// addBookBtn.addEventListener('click', function() {
-//   addBookToLibrary();
-// })
-
 // Removes book card
 const elements = document.querySelectorAll(".close-card-btn");
   elements.forEach(function (e) {
@@ -63,6 +58,7 @@ function addBookToLibrary() {
     document.getElementById("newBookPages").value,
     document.getElementById("haveRead").value);
     
+    myLibrary.push(newBook);
     addCard(newBook);
     clearModal();
 }
@@ -105,3 +101,7 @@ function clearModal() {
     document.getElementById("haveRead").value = '';
 }
 
+// Draw cards
+myLibrary.forEach((e, index) => {
+  addCard(e);
+})

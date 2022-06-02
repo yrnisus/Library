@@ -152,10 +152,21 @@ footer button:hover {
     flex-direction: column;
     justify-content: space-between;
 }
+
+.radio-container {
+    display: flex;
+    gap: 5px;
+}
+
+.spacer {
+    margin-left: 30px;
+}
+
 .btn-container {
     display: flex;
     justify-content: center;
 }
+
 
 .add-book-btn {
     height: 40px;
