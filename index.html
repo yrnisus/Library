@@ -32,19 +32,19 @@
 
     <div class="modal-bg">
         <div class="modal-container">
-            <div class="modal">
-                    <h2 class="modal-title">New Book</h2>
+            <form id='form' action='#' class="modal">
+                <h2 class="modal-title">New Book</h2>
                 <label for="title">Book title:</label>
-                <input type="text" class="newBookTitle" placeholder="Title">
+                <input type="text" id="newBookTitle" name="newBookTitle" placeholder="Title" required>
                 <label for="author">Author name:</label>
-                <input type="text" class="newBookAuthor" placeholder="Author">
+                <input type="text" id="newBookAuthor" name="newBookAuthor" placeholder="Author" required>
                 <label for="numPages">Number of pages:</label>
-                <input type="text" class="newBookPages" placeholder="Pages">
+                <input type="number" id="newBookPages" name="newBookPages" placeholder="Pages" required>
                 <label for="haveRead">Have you read this book:</label>
-                <input type="checkbox" class="haveRead">
+                <input type="checkbox" id="haveRead" name="haveRead" value="Read" required>
                 <div class="btn-container">
-                    <button class="add-book-btn">Add</button>
-                </div>
+                    <input type="submit" class="add-book-btn">
+                </form>
             </div>
             <div class="close-modal-btn">X</div>
         </div>

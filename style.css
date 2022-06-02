@@ -23,6 +23,7 @@ header {
     align-items: center;
     font-size: 42px;
     font-weight: bold;
+    z-index: 1;
 }
 
 
@@ -61,7 +62,7 @@ body {
 .close-card-btn {
     position: absolute;
     right: 13px;
-    top: 5px;
+    top: 7px;
     font-size: 18px;
     cursor: pointer;
 }
