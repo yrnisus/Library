@@ -27,17 +27,25 @@
             <div class="close-card-btn">X</div>
         </div> -->
     </div>
+<!-- 
+    <img class='read-icon' src="./images/book.png"> -->
 
     <div class="modal-bg">
         <div class="modal-container">
-            <form id='form' action='#' class="modal">
+            <form id='form' onsubmit='return false' action='#' class="modal">
                 <h2 class="modal-title">New Book</h2>
                 <label for="title">Book title:</label>
-                <input type="text" id="newBookTitle" name="newBookTitle" placeholder="Title" required>
+                <input type="text" id="newBookTitle" name="newBookTitle" placeholder="Title" required
+                oninvalid="this.setCustomValidity('Please enter the book\'s title')"
+                oninput="this.setCustomValidity('')"/>
                 <label for="author">Author name:</label>
-                <input type="text" id="newBookAuthor" name="newBookAuthor" placeholder="Author" required>
+                <input type="text" id="newBookAuthor" name="newBookAuthor" placeholder="Author" required
+                oninvalid="this.setCustomValidity('Please enter the author\'s name')"
+                oninput="this.setCustomValidity('')"/>
                 <label for="numPages">Number of pages:</label>
-                <input type="number" id="newBookPages" name="newBookPages" min='0' placeholder="Pages" required>
+                <input type="number" id="newBookPages" name="newBookPages" min='0' placeholder="Pages" required
+                oninvalid="this.setCustomValidity('Please enter the number of pages')"
+                oninput="this.setCustomValidity('')"/>
                  <label for="haveRead">Have you read this book:</label>
                 
                  <select name="haveRead" id="haveRead">
@@ -53,7 +61,7 @@
                     <input type="radio" id="notRead" name="haveRead" value="No" required>
                 </div> -->
                 <div class="btn-container">
-                    <button class="add-book-btn">Add</button>
+                    <input type="submit" class="add-book-btn">
                 </form>
             </div>
             <div class="close-modal-btn">X</div>

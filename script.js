@@ -1,22 +1,5 @@
 let myLibrary = [];
 
-// function Book(title, author, numOfPages,index) {
-//  this.title = title;
-//  this.author = author;
-//  this.numOfPages = numOfPages;
-//  this.index = index;
-// }
-
-
-// const exampleBook = new Book(
-//   'The Catcher In The Rye',
-//   'J. D. Salinger',
-//   234,
-//   0);
-
-
-// Not working Pages
-
 function Book(title, author, numOfPages, haveRead, index) {
   this.title = title;
   this.author = author;
@@ -40,6 +23,7 @@ const modalBg = document.querySelector('.modal-bg');
 const modalClose = document.querySelector('.close-modal-btn');
 const cardContainer = document.querySelector('.card-container');
 const addBookBtn = document.querySelector('.add-book-btn');
+const readToggle = document.querySelector('.read-icon');
 
 // Event Listeners
 
@@ -60,11 +44,6 @@ modalBg.addEventListener('click', e => {
 modalClose.addEventListener('click', function() {
   modalBg.classList.remove('bg-active');
 })
-
-addBookBtn.addEventListener('click', function() {
-  addBookToLibrary();
-})
-
 
 function checkInputs() {
   document.getElementById('newBookTitle').validity.valid
@@ -88,15 +67,12 @@ function addBookToLibrary() {
     clearModal();
 }
 
-// // Form
-// const form = document.getElementById('form');
+// Form
+const form = document.getElementById('form');
 
-// form.addEventListener('submit', function() {
-//   addBookToLibrary();
-// })
-
-
-//           <div class="card-read">Read: ${obj.haveRead}</div>
+form.addEventListener('submit', function() {
+  addBookToLibrary();
+})
 
 function addCard (obj) {
   // create a new div element
@@ -108,10 +84,15 @@ function addCard (obj) {
           <div class="card-title"> ${obj.title} </div>
           <div class="card-author">By: ${obj.author}</div>
           <div class="card-numOfPages">${obj.numOfPages} Pages</div>
+          <div class='read-container'>
           <div class="card-read">Read: ${obj.haveRead}</div>
+          <img class='read-icon' src="./images/book.png">
+          </div>
         </div>
        <div class="close-card-btn">X</div>
       </div>`;
+
+
       // Adds event listener to remove card to new cards
   let index = obj.index;
   newCard.querySelector('.close-card-btn').addEventListener('click', function() {
@@ -119,13 +100,19 @@ function addCard (obj) {
     removeBookFromLibrary(index);
     removeCard(newCard);
 });
+
+  // Adds read toggle to new cards
+  newCard.querySelector('.read-icon').addEventListener('click', function() {
+    let readStatus = toggleRead(index);
+    newCard.querySelector('.card-read').innerHTML = `Read: ${readStatus}`;
+  });
+
 cardContainer.appendChild(newCard);
 }
 
 // Works
 
 function clearModal() {
-  console.log('clear');
     modalBg.classList.remove('bg-active');
     document.getElementById("newBookTitle").value = '';
     document.getElementById("newBookAuthor").value = '';
@@ -145,6 +132,16 @@ if (index > -1) {
   })
 }
 
+function toggleRead(index) {
+  let readStatus = "";
+  if(myLibrary[index].haveRead === 'Yes')
+   readStatus = 'No'
+  else
+  readStatus = 'Yes'
+  myLibrary[index].haveRead = readStatus;
+  return readStatus;
+
+}
 
 function removeCard(card) {
   card.remove();

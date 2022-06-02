@@ -96,6 +96,19 @@ body {
     right: 75px;
 }
 
+.read-container {
+    display: flex;
+}
+
+.read-icon {
+    height: 32px;
+    width: 32px;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+
+
 footer button:hover {
     transform: scale(1.1);
     /* Maybe change colors */
