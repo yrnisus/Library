@@ -1,17 +1,19 @@
 let myLibrary = [];
 
-function Book(title, author, numOfPages, haveRead) {
+function Book(title, author, numOfPages, haveRead, index) {
  this.title = title;
  this.author = author;
  this.numOfPages = numOfPages;
  this.haveRead = haveRead;
+ this.index = index;
 }
 
 const exampleBook = new Book(
   'The Catcher In The Rye',
   'J. D. Salinger',
   234,
-  'Read');
+  'Yes',
+  0);
 
 myLibrary[0] = exampleBook;
 
@@ -42,21 +44,15 @@ modalClose.addEventListener('click', function() {
   modalBg.classList.remove('bg-active');
 })
 
-// Removes book card
-const elements = document.querySelectorAll(".close-card-btn");
-  elements.forEach(function (e) {
-    e.addEventListener('click', function() {
-     console.log('close');
-    })
-  });
-
 // Add new book
 function addBookToLibrary() {
   const newBook = new Book(
     document.getElementById("newBookTitle").value,
     document.getElementById("newBookAuthor").value,
     document.getElementById("newBookPages").value,
-    document.getElementById("haveRead").value);
+    document.getElementById("haveRead").value,
+    // document.querySelector('input[name="haveRead"]:checked').value,
+    myLibrary.length);
     
     myLibrary.push(newBook);
     addCard(newBook);
@@ -71,6 +67,8 @@ form.addEventListener('submit', function() {
 })
 
 
+//           <div class="card-read">Read: ${obj.haveRead}</div>
+
 function addCard (obj) {
   // create a new div element
   let newCard = document.createElement('div');
@@ -81,19 +79,24 @@ function addCard (obj) {
           <div class="card-title"> ${obj.title} </div>
           <div class="card-author">By: ${obj.author}</div>
           <div class="card-numOfPages">${obj.numOfPages} Pages</div>
-          <button class="card-read">${obj.haveRead}</button>
+          <div class="card-read">Read: ${obj.haveRead}</div>
         </div>
        <div class="close-card-btn">X</div>
       </div>`;
       // Adds event listener to remove card to new cards
+  let index = obj.index;
   newCard.querySelector('.close-card-btn').addEventListener('click', function() {
     console.log('close');
+    removeBookFromLibrary(index);
+    removeCard(newCard);
 });
 cardContainer.appendChild(newCard);
 }
 
+// Works
 
 function clearModal() {
+  console.log('clear');
     modalBg.classList.remove('bg-active');
     document.getElementById("newBookTitle").value = '';
     document.getElementById("newBookAuthor").value = '';
@@ -101,7 +104,26 @@ function clearModal() {
     document.getElementById("haveRead").value = '';
 }
 
-// Draw cards
-myLibrary.forEach((e, index) => {
-  addCard(e);
-})
+function removeBookFromLibrary(index) {
+  // removes the element at index from book array
+if (index > -1) {
+  console.log(myLibrary[index]);
+  myLibrary.splice(index, 1); // 2nd parameter means remove one item only
+  }
+// changes the index value of everyt element to index after an element has been deleted
+  myLibrary.forEach((e, index) => {
+    e.index = index;
+  })
+}
+
+
+function removeCard(card) {
+  card.remove();
+}
+
+function start() {
+  myLibrary.forEach((e, index) => {
+    addCard(e);
+  })
+}
+start();
