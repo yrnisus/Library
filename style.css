@@ -234,4 +234,8 @@ footer button:hover {
         gap: 50px; */
         
     }
+
+    body {
+        background-color: lightblue;
+    }
 }
