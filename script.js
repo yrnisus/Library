@@ -115,6 +115,7 @@ function addCard (obj) {
     newCard.querySelector('.card-read').innerHTML = `Read: ${readStatus}`
     console.log(obj.haveRead);
     newCard.querySelector('.read-icon').src = `${newBookImg}`;
+    toggleClass(newCard.querySelector('.read-container'));
   });
 
 cardContainer.appendChild(newCard);
@@ -140,6 +141,17 @@ if (index > -1) {
   myLibrary.forEach((e, index) => {
     e.index = index;
   })
+}
+
+function toggleClass(div) {
+  if(div.classList.contains('read')) {
+  div.classList.remove('read');
+  div.classList.add('not-read'); 
+}
+  else {
+    div.classList.remove('not-read');
+    div.classList.add('read'); 
+  }
 }
 
 function getReadClass(haveRead) {
