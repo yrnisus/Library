@@ -78,6 +78,9 @@ function addCard (obj) {
   // create a new div element
   let newCard = document.createElement('div');
   newCard.classList.add('card-bg');
+  // Sets the image of the book based on haveRead
+  let bookImg = getBookImg(obj);
+
   // fill with card format
   newCard.innerHTML = `
         <div class="card-text">
@@ -86,7 +89,7 @@ function addCard (obj) {
           <div class="card-numOfPages">${obj.numOfPages} Pages</div>
           <div class='read-container'>
           <div class="card-read">Read: ${obj.haveRead}</div>
-          <img class='read-icon' src="./images/book.png">
+          <img class='read-icon' src="${bookImg}">
           </div>
         </div>
        <div class="close-card-btn">X</div>
@@ -103,8 +106,13 @@ function addCard (obj) {
 
   // Adds read toggle to new cards
   newCard.querySelector('.read-icon').addEventListener('click', function() {
+
     let readStatus = toggleRead(index);
-    newCard.querySelector('.card-read').innerHTML = `Read: ${readStatus}`;
+    let newBookImg = getBookImg(obj);
+
+    newCard.querySelector('.card-read').innerHTML = `Read: ${readStatus}`
+    console.log(obj.haveRead);
+    newCard.querySelector('.read-icon').src = `${newBookImg}`;
   });
 
 cardContainer.appendChild(newCard);
@@ -132,15 +140,22 @@ if (index > -1) {
   })
 }
 
+
 function toggleRead(index) {
   let readStatus = "";
-  if(myLibrary[index].haveRead === 'Yes')
+  if(myLibrary[index].haveRead === 'Yes') 
    readStatus = 'No'
   else
   readStatus = 'Yes'
   myLibrary[index].haveRead = readStatus;
   return readStatus;
+}
 
+function getBookImg(obj) {
+  if(obj.haveRead === 'Yes')
+    return './images/book-check-outline.png'
+  else
+    return './images/book-cancel-outline.png'
 }
 
 function removeCard(card) {
