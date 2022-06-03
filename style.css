@@ -79,6 +79,40 @@ body {
     font-size: 26px;
     font-weight: 700;
 }
+
+
+.read-container {
+    display: flex;
+    padding: 5px 15px;
+    margin-left: -12px;
+    border-radius: 25px;
+    align-items: center;
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.read-container.read {
+    background-color: green;
+}
+
+.read-container.not-read {
+    background-color: red;
+}
+
+
+.read-icon {
+    height: 32px;
+    width: 32px;
+    margin-left: auto;
+}
+
+
 .modal-btn {
     position: fixed;
     width: 75px;
@@ -95,24 +129,6 @@ body {
     bottom: 75px;
     right: 75px;
 }
-
-.read-container {
-    display: flex;
-}
-
-.read-icon {
-    height: 32px;
-    width: 32px;
-    margin-left: auto;
-    cursor: pointer;
-}
-
-.read {
-    background-color: green;
-}
-
-
-
 
 footer button:hover {
     transform: scale(1.1);

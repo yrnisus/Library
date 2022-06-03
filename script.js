@@ -23,7 +23,7 @@ const modalBg = document.querySelector('.modal-bg');
 const modalClose = document.querySelector('.close-modal-btn');
 const cardContainer = document.querySelector('.card-container');
 const addBookBtn = document.querySelector('.add-book-btn');
-const readToggle = document.querySelector('.read-icon');
+const readToggle = document.querySelector('.read-container');
 
 // Event Listeners
 
@@ -80,6 +80,7 @@ function addCard (obj) {
   newCard.classList.add('card-bg');
   // Sets the image of the book based on haveRead
   let bookImg = getBookImg(obj);
+  let readClass = getReadClass(obj.haveRead);
 
   // fill with card format
   newCard.innerHTML = `
@@ -87,11 +88,12 @@ function addCard (obj) {
           <div class="card-title"> ${obj.title} </div>
           <div class="card-author">By: ${obj.author}</div>
           <div class="card-numOfPages">${obj.numOfPages} Pages</div>
-          <div class='read-container'>
-          <div class="card-read">Read: ${obj.haveRead}</div>
-          <img class='read-icon' src="${bookImg}">
+          <div class="read-container-bg">
+            <div class='read-container ${readClass}'>
+              <div class="card-read">Read: ${obj.haveRead}</div>
+              <img class='read-icon' src="${bookImg}"></div>
+            </div>
           </div>
-        </div>
        <div class="close-card-btn">X</div>
       </div>`;
 
@@ -105,7 +107,7 @@ function addCard (obj) {
 });
 
   // Adds read toggle to new cards
-  newCard.querySelector('.read-icon').addEventListener('click', function() {
+  newCard.querySelector('.read-container').addEventListener('click', function() {
 
     let readStatus = toggleRead(index);
     let newBookImg = getBookImg(obj);
@@ -138,6 +140,13 @@ if (index > -1) {
   myLibrary.forEach((e, index) => {
     e.index = index;
   })
+}
+
+function getReadClass(haveRead) {
+  if(haveRead === 'Yes') 
+    return 'read'
+  else
+    return 'not-read'
 }
 
 
