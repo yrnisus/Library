@@ -238,4 +238,17 @@ footer button:hover {
     body {
         background-color: lightblue;
     }
+
+    .modal-container {
+        position: relative;
+        background-color: #FFF;
+        height: 700px;
+        width: 300px;
+    }
+    
+
+    .modal {
+
+    }
+
 }
