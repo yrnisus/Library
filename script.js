@@ -18,7 +18,8 @@ const exampleBook = new Book(
 myLibrary[0] = exampleBook;
 
 
-const modalBtn = document.querySelector('.modal-btn');
+// const modalBtn = document.querySelector('.modal-btn');
+const modalBtnMobile = document.querySelector('.modal-btn-mobile');
 const modalBg = document.querySelector('.modal-bg');
 const modalClose = document.querySelector('.close-modal-btn');
 const cardContainer = document.querySelector('.card-container');
@@ -29,7 +30,11 @@ const readToggle = document.querySelector('.read-container');
 
 
 // Opens modal
-modalBtn.addEventListener('click', function() {
+// modalBtn.addEventListener('click', function() {
+//   modalBg.classList.add('bg-active');
+// })
+
+modalBtnMobile.addEventListener('click', function() {
   modalBg.classList.add('bg-active');
 })
 
@@ -75,6 +80,7 @@ form.addEventListener('submit', function() {
 })
 
 function addCard (obj) {
+  generateDummyCard();
   // create a new div element
   let newCard = document.createElement('div');
   newCard.classList.add('card-bg');
@@ -91,7 +97,7 @@ function addCard (obj) {
           <div class="read-container-bg">
             <div class='read-container ${readClass}'>
               <div class="card-read">Read: ${obj.haveRead}</div>
-              <img class='read-icon' src="${bookImg}"></div>
+              <img class='read-icon' src="${bookImg}">
             </div>
           </div>
        <div class="close-card-btn">X</div>
@@ -119,6 +125,12 @@ function addCard (obj) {
   });
 
 cardContainer.appendChild(newCard);
+cardContainer.appendChild(generateDummyCard());
+let dummyAddBtn = document.querySelector('.dummy-card-add');
+    if(dummyAddBtn)
+    dummyAddBtn.addEventListener('click', function() {
+      modalBg.classList.add('bg-active');
+    })
 }
 
 // Works
@@ -188,5 +200,23 @@ function start() {
     addCard(e);
   })
 }
+
+function generateDummyCard() {
+  let dummyCard = document.querySelector('.dummy-card');
+  if(dummyCard)
+    dummyCard.remove();
+
+    dummyCard = document.createElement('div');
+    dummyCard.innerHTML = '<svg class="dummy-card-add" style="width:240px;height:240px" viewBox="0 0 24 24"> <path fill="currentColor" d="M13.09 20C13.21 20.72 13.46 21.39 13.81 22H6C4.89 22 4 21.11 4 20V4C4 2.9 4.89 2 6 2H18C19.11 2 20 2.9 20 4V13.09C19.67 13.04 19.34 13 19 13C18.66 13 18.33 13.04 18 13.09V4H13V12L10.5 9.75L8 12V4H6V20H13.09M20 18V15H18V18H15V20H18V23H20V20H23V18H20Z" /> </svg>'
+    dummyCard.classList.add('card-bg');
+    dummyCard.classList.add('dummy-card');
+
+  // dummyAddBtn.addEventListener('click', function() {
+  //   alert();
+  // })
+  
+  return dummyCard;
+}
+
 
 start();
